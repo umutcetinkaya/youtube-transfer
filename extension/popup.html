@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      width: 400px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0f0f0f;
+      color: #fff;
+      padding: 16px;
+    }
+
+    h1 {
+      font-size: 16px;
+      color: #ff0000;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .status {
+      padding: 8px 12px;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      font-size: 13px;
+    }
+
+    .status.connected {
+      background: #1a3d1a;
+      color: #2ecc71;
+    }
+
+    .status.disconnected {
+      background: #3d1a1a;
+      color: #e74c3c;
+    }
+
+    .video-list {
+      max-height: 300px;
+      overflow-y: auto;
+      margin-bottom: 12px;
+    }
+
+    .video-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+      background: #1a1a1a;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      cursor: pointer;
+    }
+
+    .video-item:hover {
+      background: #252525;
+    }
+
+    .video-item.selected {
+      background: #1a3a5c;
+      border: 1px solid #3ea6ff;
+    }
+
+    .video-item.uploaded {
+      opacity: 0.5;
+    }
+
+    .video-thumb {
+      width: 60px;
+      height: 34px;
+      background: #333;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+    }
+
+    .video-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .video-title {
+      font-size: 13px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .video-meta {
+      font-size: 11px;
+      color: #888;
+    }
+
+    .shorts-badge {
+      background: #ff0050;
+      color: white;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 9px;
+      font-weight: 600;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      margin-bottom: 8px;
+    }
+
+    .btn-primary {
+      background: #ff0000;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #cc0000;
+    }
+
+    .btn-primary:disabled {
+      background: #333;
+      color: #666;
+      cursor: not-allowed;
+    }
+
+    .btn-secondary {
+      background: #333;
+      color: #fff;
+    }
+
+    .btn-secondary:hover {
+      background: #444;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 30px;
+      color: #666;
+    }
+
+    .instructions {
+      font-size: 12px;
+      color: #888;
+      line-height: 1.5;
+      padding: 10px;
+      background: #1a1a1a;
+      border-radius: 8px;
+    }
+
+    .instructions ol {
+      margin-left: 16px;
+    }
+  </style>
+</head>
+<body>
+  <h1>
+    <span style="font-size: 24px;">▶</span>
+    YouTube Transfer Helper
+  </h1>
+
+  <div id="status" class="status disconnected">
+    Checking connection...
+  </div>
+
+  <div id="content">
+    <div class="empty-state">Loading...</div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

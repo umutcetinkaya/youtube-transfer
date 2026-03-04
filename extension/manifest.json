@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube Transfer Helper",
+  "version": "1.0.0",
+  "description": "Automate video uploads in YouTube Studio with metadata auto-fill",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting",
+    "clipboardWrite"
+  ],
+  "host_permissions": [
+    "https://studio.youtube.com/*",
+    "http://localhost:3000/*"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://studio.youtube.com/*"],
+      "js": ["content.js"],
+      "css": ["content.css"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+}
